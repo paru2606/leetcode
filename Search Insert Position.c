@@ -1,0 +1,20 @@
+int searchInsert(int* nums, int numsSize, int target) {
+    int left = 0;
+    int right = numsSize - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;  // Avoid overflow
+        
+        if (nums[mid] == target) {
+            return mid;  // Found it
+        }
+        else if (nums[mid] < target) {
+            left = mid + 1;  // Search right half
+        }
+        else {
+            right = mid - 1;  // Search left half
+        }
+    }
+    
+    return left;  // Insert position when not found
+}
